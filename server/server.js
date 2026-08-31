@@ -23,7 +23,7 @@ const port= process.env.PORT || 3000
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: "https://job-hub-kohl-iota.vercel.app/",
         credentials: true,
     })
 );

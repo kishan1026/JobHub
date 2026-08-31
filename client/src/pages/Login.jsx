@@ -5,6 +5,8 @@ import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
+
+    const API = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -33,7 +35,7 @@ const Login = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/users/login",
+                `${API}/users/login`,
                 formData,
                 {
                     withCredentials: true,

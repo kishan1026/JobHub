@@ -19,12 +19,13 @@ const JobDetails = () => {
   const [applying, setApplying] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchJob = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/jobs/${jobId}`
+          `${API}/jobs/${jobId}`
         );
 
         setJob(response.data.job);
@@ -48,7 +49,7 @@ const JobDetails = () => {
       setMessage("");
 
       const response = await axios.post(
-        `http://localhost:3000/api/applications/${jobId}`,
+        `${API}/applications/${jobId}`,
         {
           coverLetter,
         },

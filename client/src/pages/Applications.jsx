@@ -52,12 +52,13 @@ const Applications = () => {
     const [applications, setApplications] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeFilter, setActiveFilter] = useState("all");
+    const API = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchApplications = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3000/api/applications/my-applications",
+                    `${API}/applications/my-applications`,
                     {
                         withCredentials: true,
                     }

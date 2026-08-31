@@ -23,7 +23,7 @@ const Register = () => {
             [e.target.name]: e.target.value,
         });
     };
-
+    const API = import.meta.env.VITE_API_URL;
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -32,7 +32,7 @@ const Register = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/users/register",
+                `${API}/users/register`,
                 formData
             );
 

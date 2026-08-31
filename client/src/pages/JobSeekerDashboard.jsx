@@ -18,6 +18,7 @@ import { useAuth } from "../context/AuthContext";
 
 const JobSeekerDashboard = () => {
     const { user, logout } = useAuth();
+    const API = import.meta.env.VITE_API_URL;
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -27,11 +28,12 @@ const JobSeekerDashboard = () => {
     const [profile, setProfile] = useState(null);
     const [profileLoading, setProfileLoading] = useState(true);
 
+
     useEffect(() => {
         const fetchApplications = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3000/api/applications/my-applications",
+                    `${API}/applications/my-applications`,
                     {
                         withCredentials: true,
                     }
@@ -57,7 +59,7 @@ const JobSeekerDashboard = () => {
         const fetchProfile = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3000/api/profile/me",
+                    `${API}/profile/me`,
                     {
                         withCredentials: true,
                     }

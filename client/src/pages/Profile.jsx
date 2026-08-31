@@ -10,6 +10,7 @@ const Profile = () => {
     const [uploading, setUploading] = useState(false);
     const [analyzing, setAnalyzing] = useState(false);
 
+
     const [form, setForm] = useState({
         fullName: "",
         phone: "",
@@ -18,12 +19,14 @@ const Profile = () => {
         skills: "",
     });
 
+    const API = import.meta.env.VITE_API_URL;
+
     // Get profile
     useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3000/api/profile/me",
+                    `${API}/profile/me`,
                     {
                         withCredentials: true,
                     }
@@ -65,7 +68,7 @@ const Profile = () => {
             setSaving(true);
 
             const response = await axios.put(
-                "http://localhost:3000/api/profile/me",
+                `${API}/profile/me`,
                 {
                     fullName: form.fullName,
                     phone: form.phone,
@@ -113,7 +116,7 @@ const Profile = () => {
             setUploading(true);
 
             const response = await axios.post(
-                "http://localhost:3000/api/profile/resume",
+                `${API}/profile/resume`,
                 formData,
                 {
                     withCredentials: true,
@@ -160,7 +163,7 @@ const Profile = () => {
             formData.append("resume", file);
 
             const response = await axios.post(
-                "http://localhost:3000/api/profile/resume/analyze",
+                `${API}/profile/resume/analyze`,
                 formData,
                 {
                     withCredentials: true,

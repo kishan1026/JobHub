@@ -11,12 +11,13 @@ const FeaturedJobs = () => {
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const API = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchJobs = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3000/api/jobs"
+                    `${API}/jobs`
                 );
 
                 setJobs(response.data.jobs || []);

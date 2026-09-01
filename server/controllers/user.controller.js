@@ -108,6 +108,9 @@ const loginUser = async (req, res) => {
             path: "/",
         });
 
+        console.log("COOKIE SET:", token ? "YES" : "NO");
+       console.log("NODE_ENV:", process.env.NODE_ENV);
+
         return res.status(200).json({
             message: "Login successful",
             user: {

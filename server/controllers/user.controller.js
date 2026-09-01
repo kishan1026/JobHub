@@ -105,6 +105,7 @@ const loginUser = async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: "none",
+            path: "/",
         });
 
         return res.status(200).json({
@@ -139,11 +140,9 @@ const getCurrentUser = async (req, res) => {
 const logoutUser = async (req, res) => {
     res.clearCookie("accessToken", {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite:
-            process.env.NODE_ENV === "production"
-                ? "none"
-                : "lax",
+        secure: true,
+        sameSite: "none",
+        path: "/",
     });
 
     return res.status(200).json({
